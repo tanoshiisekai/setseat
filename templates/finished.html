@@ -1,0 +1,227 @@
+<html>
+
+<head>
+    <title>请选择座位</title>
+    <meta charset="utf-8" />
+    <style>
+        #welcome {
+            font-size: 20pt;
+            float: left;
+        }
+
+        #submitbtn {
+            float: left;
+            width: 950px;
+            height: 80px;
+            margin-top: 50px;
+            background-color: mediumseagreen;
+            border: none;
+            color: white;
+        }
+
+        .box {
+            float: left;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: pink;
+            width: 50px;
+            height: 500px;
+            float: left;
+            text-align: center;
+        }
+
+        .line {
+            width: 200px;
+            height: 500px;
+            background-color: #EEEEEE;
+        }
+
+        #blackboard {
+            width: 950px;
+            line-height: 50px;
+            height: 50px;
+            background-color: antiquewhite;
+            min-height: 50px;
+        }
+
+        #seats {
+            width: 950px;
+        }
+
+        .title {
+            font-size: 16px;
+        }
+
+        .row {
+            float: left;
+            width: 200px;
+        }
+
+        .col {
+            float: left;
+            width: 80px;
+            margin: 5px;
+            padding: 5px;
+            height: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: darkgray;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var chooselist = new Array();
+
+        function getseat(seatid) {
+            if (!chooselist.find((n) => n == seatid)) {
+                document.getElementById(seatid).style = "background-color: cornflowerblue;";
+                chooselist.push(seatid);
+            } else {
+                document.getElementById(seatid).style = "background-color: darkgray;";
+                var posi = chooselist.findIndex((n) => n == seatid);
+                chooselist = chooselist.slice(0, posi).concat(chooselist.slice(posi+1));
+            }
+        }
+
+        function submitlist() {
+            username = document.getElementById("username").innerText;
+            if (chooselist.length != 5) {
+                if(chooselist.length > 5){
+                    alert("最多选择5个座位。")
+                }
+                if (chooselist.length < 5){
+                    alert("最少选择5个座位。")
+                }
+            } else {
+                choosestr = "";
+                for (var i in chooselist) {
+                    choosestr = choosestr + chooselist[i] + "^"
+                }
+                window.location.href = "/result?username=" + username + "&choosestr=" + choosestr;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="welcome">欢迎你:
+            <span id="username">{{ username }}</span>，请在下图中选择5个你倾向的座位：</div>
+
+        <div id="seats">
+            <div id="blackboard" class="box title">讲桌</div>
+            <div id="left" class="box line">
+                <div class="title">左排</div>
+                <div class="row">
+                    <div class="col" id="A1" onclick="getseat('A1')">A1</div>
+                    <div class="col" id="B1" onclick="getseat('B1')">B1</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A2" onclick="getseat('A2')">A2</div>
+                    <div class="col" id="B2" onclick="getseat('B2')">B2</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A3" onclick="getseat('A3')">A3</div>
+                    <div class="col" id="B3" onclick="getseat('B3')">B3</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A4" onclick="getseat('A4')">A4</div>
+                    <div class="col" id="B4" onclick="getseat('B4')">B4</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A5" onclick="getseat('A5')">A5</div>
+                    <div class="col" id="B5" onclick="getseat('B5')">B5</div>
+                </div>
+            </div>
+            <div class="nav">过道</div>
+            <div id="middleleft" class="box line">
+                <div class="title">中左排</div>
+                <div class="row">
+                    <div class="col" id="C1" onclick="getseat('C1')">C1</div>
+                    <div class="col" id="D1" onclick="getseat('D1')">D1</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C2" onclick="getseat('C2')">C2</div>
+                    <div class="col" id="D2" onclick="getseat('D2')">D2</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C3" onclick="getseat('C3')">C3</div>
+                    <div class="col" id="D3" onclick="getseat('D3')">D3</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C4" onclick="getseat('C4')">C4</div>
+                    <div class="col" id="D4" onclick="getseat('D4')">D4</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C5" onclick="getseat('C5')">C5</div>
+                    <div class="col" id="D5" onclick="getseat('D5')">D5</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C6" onclick="getseat('C6')">C6</div>
+                    <div class="col" id="D6" onclick="getseat('D6')">D6</div>
+                </div>
+            </div>
+            <div class="nav">过道</div>
+            <div id="middleright" class="box line">
+                <div class="title">中右排</div>
+                <div class="row">
+                    <div class="col" id="E1" onclick="getseat('E1')">E1</div>
+                    <div class="col" id="F1" onclick="getseat('F1')">F1</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E2" onclick="getseat('E2')">E2</div>
+                    <div class="col" id="F2" onclick="getseat('F2')">F2</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E3" onclick="getseat('E3')">E3</div>
+                    <div class="col" id="F3" onclick="getseat('F3')">F3</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E4" onclick="getseat('E4')">E4</div>
+                    <div class="col" id="F4" onclick="getseat('F4')">F4</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E5" onclick="getseat('E5')">E5</div>
+                    <div class="col" id="F5" onclick="getseat('F5')">F5</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E6" onclick="getseat('E6')">E6</div>
+                    <div class="col" id="F6" onclick="getseat('F6')">F6</div>
+                </div>
+            </div>
+            <div class="nav">过道</div>
+            <div id="right" class="box line">
+                <div class="title">右排</div>
+                <div class="row">
+                    <div class="col" id="G1" onclick="getseat('G1')">G1</div>
+                    <div class="col" id="H1" onclick="getseat('H1')">H1</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G2" onclick="getseat('G2')">G2</div>
+                    <div class="col" id="H2" onclick="getseat('H2')">H2</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G3" onclick="getseat('G3')">G3</div>
+                    <div class="col" id="H3" onclick="getseat('H3')">H3</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G4" onclick="getseat('G4')">G4</div>
+                    <div class="col" id="H4" onclick="getseat('H4')">H4</div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G5" onclick="getseat('G5')">G5</div>
+                    <div class="col" id="H5" onclick="getseat('H5')">H5</div>
+                </div>
+            </div>
+        </div>
+        <div id="submit">
+            <input id="submitbtn" type="button" onclick="submitlist()" value="提交" />
+        </div>
+    </div>
+
+</body>
+
+</html>

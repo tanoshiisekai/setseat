@@ -1,0 +1,219 @@
+<html>
+
+<head>
+    <title>汇总结果</title>
+    <meta charset="utf-8" />
+    <style>
+        #welcome {
+            font-size: 20pt;
+            float: left;
+        }
+
+        #submitbtn {
+            float: left;
+            width: 950px;
+            height: 80px;
+            margin-top: 50px;
+            background-color: mediumseagreen;
+            border: none;
+            color: white;
+        }
+
+        .box {
+            float: left;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: pink;
+            width: 50px;
+            float: left;
+            text-align: center;
+        }
+
+        .line {
+            width: 200px;
+        }
+
+        #blackboard {
+            width: 950px;
+            line-height: 50px;
+            height: 50px;
+            background-color: antiquewhite;
+            min-height: 50px;
+        }
+
+        #seats {
+            width: 950px;
+        }
+
+        .title {
+            font-size: 16px;
+        }
+
+        .row {
+            float: left;
+            width: 200px;
+        }
+
+        .col {
+            float: left;
+            width: 80px;
+            margin: 5px;
+            padding: 5px;
+            min-height: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: darkgray;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var result = JSON.parse(xmlhttp.responseText);
+                for (var i in result) {
+                    var aimblock = document.getElementById(result[i].choose1);
+                    aimblock.style = "background-color: cornflowerblue;";
+                    aimblock.innerHTML = aimblock.innerHTML + result[i].username + "<br/>";
+                    var aimblock = document.getElementById(result[i].choose2);
+                    aimblock.style = "background-color: cornflowerblue;";
+                    aimblock.innerHTML = aimblock.innerHTML + result[i].username + "<br/>";
+                    var aimblock = document.getElementById(result[i].choose3);
+                    aimblock.style = "background-color: cornflowerblue;";
+                    aimblock.innerHTML = aimblock.innerHTML + result[i].username + "<br/>";
+                    var aimblock = document.getElementById(result[i].choose4);
+                    aimblock.style = "background-color: cornflowerblue;";
+                    aimblock.innerHTML = aimblock.innerHTML + result[i].username + "<br/>";
+                    var aimblock = document.getElementById(result[i].choose5);
+                    aimblock.style = "background-color: cornflowerblue;";
+                    aimblock.innerHTML = aimblock.innerHTML + result[i].username + "<br/>";
+                }
+            }
+        }
+        xmlhttp.open("GET", "/getsummary", true);
+        xmlhttp.send();
+    </script>
+</head>
+
+<body>
+    <div id="container">
+            <div id="welcome">共有{{ lines }}名同学选择了座位。</div>
+        <div id="seats">
+            <div id="blackboard" class="box title">讲桌</div>
+            <div id="left" class="box line">
+                <div class="title">左排</div>
+                <div class="row">
+                    <div class="col" id="A1"></div>
+                    <div class="col" id="B1"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A2"></div>
+                    <div class="col" id="B2"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A3"></div>
+                    <div class="col" id="B3"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A4"></div>
+                    <div class="col" id="B4"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="A5"></div>
+                    <div class="col" id="B5"></div>
+                </div>
+            </div>
+            <div class="nav">过道</div>
+            <div id="middleleft" class="box line">
+                <div class="title">中左排</div>
+                <div class="row">
+                    <div class="col" id="C1"></div>
+                    <div class="col" id="D1"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C2"></div>
+                    <div class="col" id="D2"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C3"></div>
+                    <div class="col" id="D3"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C4"></div>
+                    <div class="col" id="D4"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C5"></div>
+                    <div class="col" id="D5"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="C6"></div>
+                    <div class="col" id="D6"></div>
+                </div>
+            </div>
+            <div class="nav">过道</div>
+            <div id="middleright" class="box line">
+                <div class="title">中右排</div>
+                <div class="row">
+                    <div class="col" id="E1"></div>
+                    <div class="col" id="F1"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E2"></div>
+                    <div class="col" id="F2"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E3"></div>
+                    <div class="col" id="F3"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E4"></div>
+                    <div class="col" id="F4"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E5"></div>
+                    <div class="col" id="F5"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="E6"></div>
+                    <div class="col" id="F6"></div>
+                </div>
+            </div>
+            <div class="nav">过道</div>
+            <div id="right" class="box line">
+                <div class="title">右排</div>
+                <div class="row">
+                    <div class="col" id="G1"></div>
+                    <div class="col" id="H1"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G2"></div>
+                    <div class="col" id="H2"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G3"></div>
+                    <div class="col" id="H3"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G4"></div>
+                    <div class="col" id="H4"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="G5"></div>
+                    <div class="col" id="H5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

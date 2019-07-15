@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>欢迎使用排座位系统</title>
+    <style>
+        #welcome {
+            width: 800px;
+            float: left;
+        }
+
+        #name {
+            font-size: 20pt;
+            height: 45px;
+            float: left;
+            min-height: 45px;
+            width: 200px;
+        }
+
+        #sendname {
+            float: left;
+            width: 100px;
+            height: 45px;
+            background-color: cornflowerblue;
+            border: none;
+            color: white;
+        }
+    </style>
+    <script>
+        function gotoseats() {
+            var username=document.getElementById("name").value;
+            window.location.href="/getseat?username="+username;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="welcome">
+        <input type="text" id="name" placeholder="请输入你的姓名" />
+        <input type="button" id="sendname" value="提交" onclick="gotoseats()"/>
+    </div>
+</body>
+
+</html>
